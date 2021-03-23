@@ -5,23 +5,25 @@ import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 
 export interface TabellaItem {
-  id: number,
-  name: string,
-  surname: string,
+  employeeId: number,
+  firstName: string,
+  lastName: string,
   email: string,
   phone: string,
 }
 
 // TODO: replace this with real data from your application
-let dati: TabellaItem[];
+var x: any;
 var xhr = new XMLHttpRequest()
-xhr.open("GET", "/api/tutorial/1.0/employees", true);
-xhr.setRequestHeader("Content-Type", "application/json");
+xhr.open("GET", "http://localhost:8080/api/tutorial/1.0/employees", true);
+xhr.setRequestHeader("Accept" ,"*/*");
 xhr.onreadystatechange = function() {
   if (xhr.readyState === xhr.DONE && xhr.status === 200) {
-    dati = xhr.response;
+    const dati: TabellaItem[] = JSON.parse(xhr.response);
+    x = dati;
   }
 };
+
 
 
 
@@ -31,7 +33,7 @@ xhr.onreadystatechange = function() {
  * (including sorting, pagination, and filtering).
  */
 export class TabellaDataSource extends DataSource<TabellaItem> {
-  data: TabellaItem[] = dati;
+  data: TabellaItem[] = x;
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
@@ -88,10 +90,11 @@ export class TabellaDataSource extends DataSource<TabellaItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
-        case 'name': return compare(a.name, b.name, isAsc);
+        case 'firstName': return compare(a.firstName, b.firstName, isAsc);
         case 'email': return compare(+a.email, +b.email, isAsc);
-        case 'address': return compare(+a.surname, +b.surname, isAsc);
+        case 'lastName': return compare(+a.lastName, +b.lastName, isAsc);
         case 'phone': return compare(+a.phone, +b.phone, isAsc);
+        case 'employeeId': return compare(+a.employeeId, +b.employeeId, isAsc);
         default: return 0;
       }
     });
