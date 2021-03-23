@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatSliderModule } from '@angular/material/slider';
-import { TestDashboardComponent } from './test-dashboard/test-dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
@@ -21,7 +20,6 @@ import { MatSortModule } from '@angular/material/sort';
 @NgModule({
   declarations: [
     AppComponent,
-    TestDashboardComponent,
     TabellaComponent
   ],
   imports: [
