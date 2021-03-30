@@ -1,8 +1,4 @@
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
-import { MatTableModule } from '@angular/material/table';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TabellaComponent } from './tabella.component';
 
@@ -10,17 +6,12 @@ describe('TabellaComponent', () => {
   let component: TabellaComponent;
   let fixture: ComponentFixture<TabellaComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ TabellaComponent ],
-      imports: [
-        NoopAnimationsModule,
-        MatPaginatorModule,
-        MatSortModule,
-        MatTableModule,
-      ]
-    }).compileComponents();
-  }));
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ TabellaComponent ]
+    })
+    .compileComponents();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TabellaComponent);
@@ -28,7 +19,7 @@ describe('TabellaComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should compile', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

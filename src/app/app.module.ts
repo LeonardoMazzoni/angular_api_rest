@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,15 +13,16 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
-import { TabellaComponent } from './tabella/tabella.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { TabellaComponent } from './tabella/tabella.component';
+import { RestService } from './rest.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TabellaComponent
+    TabellaComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,9 +37,10 @@ import { MatSortModule } from '@angular/material/sort';
     LayoutModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [RestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
