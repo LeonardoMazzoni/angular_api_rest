@@ -20,7 +20,7 @@ export class TabellaComponent {
     this.loadData();
   }
 
-  colonne: string[] = ['id', 'name', 'surname', 'email', 'phone'];
+  colonne: string[] = ['id', 'name', 'surname', 'email', 'phone', 'actions'];
   data:any;
   errors:any;
 
